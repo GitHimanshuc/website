@@ -26,19 +26,19 @@
 Paper links live in `content/links/` and use the standalone template in
 `layouts/links/single.html`. They build to ordinary HTML and need no hosting-specific
 redirect rules or JavaScript. They are excluded from normal paper lists and feeds.
-The front matter `url` places them under `/links/` while keeping their source
+The front matter `url` places them under `/papers/` while keeping their source
 files separate from the site's regular paper pages.
 
-The demo at `/links/2608.12211-bh_spin/` redirects to
+The demo at `/papers/2608.12211-bh_spin/` redirects to
 https://arxiv.org/abs/2608.12211. Preview it with `hugo server`, then open
-http://localhost:1313/links/2608.12211-bh_spin/ directly.
+http://localhost:1313/papers/2608.12211-bh_spin/ directly.
 
 To add a paper, create `content/links/your-short-slug.md`:
 
 ```yaml
 ---
 title: "Your paper title"
-url: "/links/your-short-slug/"
+url: "/papers/your-short-slug/"
 status: "In preparation"
 redirect_to: ""
 ---
