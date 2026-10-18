@@ -1,0 +1,42 @@
+{{- $target := .Params.redirect_to | default "" -}}
+{{- if $target -}}
+  {{- $parsed := urls.Parse $target -}}
+  {{- if or (not (in (slice "https" "http") $parsed.Scheme)) (not $parsed.Host) -}}
+    {{- errorf "%s: redirect_to must be an absolute HTTP or HTTPS URL" .File.Path -}}
+  {{- end -}}
+{{- end -}}
+<!DOCTYPE html>
+<html lang="{{ site.Language.Lang | default "en" }}">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{{ .Title }} | {{ site.Title }}</title>
+  {{ with $target }}
+  <meta http-equiv="refresh" content="0; url={{ . }}">
+  <link rel="canonical" href="{{ . }}">
+  {{ else }}
+  <link rel="canonical" href="{{ .Permalink }}">
+  {{ end }}
+  <style>
+    :root { color-scheme: light dark; }
+    body { margin: 0; font: 1.1rem/1.6 system-ui, sans-serif; }
+    main { max-width: 42rem; margin: 12vh auto; padding: 1.5rem; }
+    h1 { font-size: clamp(1.6rem, 4vw, 2.2rem); line-height: 1.25; }
+    a { color: LinkText; overflow-wrap: anywhere; }
+    .status { opacity: .75; }
+  </style>
+</head>
+<body>
+  <main>
+    <h1>{{ .Title }}</h1>
+    {{ if $target }}
+    <p class="status">{{ .Params.status | default "Available online" }}</p>
+    <p>Redirecting to the paper. If you are not redirected, <a href="{{ $target }}">open the paper here</a>.</p>
+    {{ else }}
+    <p class="status">{{ .Params.status | default "Coming soon" }}</p>
+    <p>This permanent link will lead to the paper when it is available.</p>
+    {{ .Content }}
+    {{ end }}
+  </main>
+</body>
+</html>
