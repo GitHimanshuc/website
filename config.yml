@@ -16,7 +16,7 @@ menu:
         #   url: books/
         #   weight: 5 
         - name: Papers
-          url: papers/
+          url: https://orcid.org/0000-0002-4101-0534
           weight: 2
         # - name: Courses
         #   url: courses/
@@ -61,7 +61,7 @@ params:
           imageHeight: 160
           buttons:
             - name: Papers
-              url: papers/
+              url: https://orcid.org/0000-0002-4101-0534
             # - name: Data
             #   url: data/
             # - name: Books
@@ -79,7 +79,7 @@ params:
         - name: CV
           url: cv.pdf
         - name: Email
-          url: hchaudha@caltech.edu
+          url: mailto:hchaudha@caltech.edu
         # - name: Zoom
         #   url: https://www.zoom.us/my/igelfeld
         # - name: Location
@@ -87,7 +87,7 @@ params:
         # - name: Office Hours
         #   url: officehours/
         - name: Google Scholar
-          url: https://orcid.org/my-orcid?orcid=0000-0002-4101-0534
+          url: https://orcid.org/0000-0002-4101-0534
         - name: GitHub
           url: https://github.com/GitHimanshuc
         # - name: Substack
